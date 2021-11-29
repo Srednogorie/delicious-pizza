@@ -19,7 +19,7 @@ const Pizza: React.FC<Props> = ({pizza}) => {
         setState((prevState) => {
             const itemExists = prevState.cart.items.find((item) => item.id === pizza.id);
             return {
-                ...prevState.cart,
+                ...prevState,
                 cart: {
                     ...prevState.cart,
                     items: itemExists ? prevState.cart.items.map(item => {
