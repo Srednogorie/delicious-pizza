@@ -2,13 +2,17 @@ import React from "react";
 import PizzaCSS from "./Pizza.modules.css";
 import {useStateDispatch} from "./AppState";
 import {PizzaInterface} from "../types";
-import {AddToCartProps, withAddToCart} from "./AddToCard";
+import {AddToCartProps, useAddToCart, withAddToCart} from "./AddToCard";
 
-interface Props extends AddToCartProps{
+// interface Props extends AddToCartProps{
+//     pizza: PizzaInterface
+// }
+interface Props {
     pizza: PizzaInterface
 }
 
-const Pizza: React.FC<Props> = ({pizza, addToCart}) => {
+const Pizza: React.FC<Props> = ({pizza}) => {
+    const addToCart = useAddToCart();
     const handlerAddToCard = () => {
         addToCart({id: pizza.id, name: pizza.name, price: pizza.price})
     };
@@ -22,4 +26,5 @@ const Pizza: React.FC<Props> = ({pizza, addToCart}) => {
     )
 }
 
-export default withAddToCart(Pizza);
+// export default withAddToCart(Pizza); // HOC usage
+export default Pizza;
